@@ -26,8 +26,8 @@ export default function App() {
       </head>
       <body>
         <div style={{ textAlign: 'center' }}>
-          <h1>
-            <Link to="/" style={{ textDecoration: 'none' }}>📖</Link> <span className="title">Storytown</span>
+          <h1 style={{ textShadow: '1.5px 3px 3px rgba(0,0,0,0.1)', opacity: 0.95 }}>
+            <Link to="/" style={{ textDecoration: 'none' }}>📜</Link> <span className="title">Storytown</span>
           </h1>
         </div>
         <div style={{ maxWidth: '648px', margin: '0 auto', paddingInline: '16px' }}>

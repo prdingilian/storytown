@@ -58,7 +58,7 @@ export default function NewStory() {
           <label>
             Story name
             <div>
-              <input name="storyName" defaultValue='The Funky Skunk' required />
+              <input name="storyName" placeholder='The Funky Skunk' required />
             </div>
           </label>
         </div>
@@ -67,7 +67,7 @@ export default function NewStory() {
           <label>
             Max contribution length (characters)
             <div>
-              <input type="number" name="contributionLength" defaultValue={140} required />
+              <input type="number" name="contributionLength" placeholder='140' required />
             </div>
           </label>
         </div>
@@ -76,7 +76,7 @@ export default function NewStory() {
           <label>
             Initial time limit (seconds)
             <div>
-              <input type="number" name="timeLimit" max={120} defaultValue={40} required />
+              <input type="number" name="timeLimit" max={120} placeholder='40' required />
             </div>
           </label>
         </div>

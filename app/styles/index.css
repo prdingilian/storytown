@@ -87,6 +87,11 @@ button {
       hsl(240deg 7% 89%) 100%);
   box-shadow: var(--shadow-elevation-low);
   cursor: pointer;
+  opacity: 0.94;
+}
+
+button:hover {
+  opacity: 1;
 }
 
 .title {
@@ -101,6 +106,7 @@ button {
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+  letter-spacing: 0.9px;
 }
 
 input {

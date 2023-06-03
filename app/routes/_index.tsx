@@ -22,7 +22,7 @@ export default function Index() {
       <h3>How does the game work?</h3>
       <p>
         Players take turns contributing to a story while only being able to see
-        one previous contribution. Once every player has contributed, a new round
+        the previous contribution. Once every player has contributed, a new round
         begins with a shorter time limit. When the time limit runs out, the story
         is finally revealed.
       </p>
