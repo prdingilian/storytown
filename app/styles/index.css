@@ -1,0 +1,131 @@
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  box-sizing: border-box;
+  font-size: 1.12rem;
+  color: #43444e;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background-image: linear-gradient(70deg,
+      hsl(236deg 33% 93%) 0%,
+      hsl(236deg 31% 93%) 5%,
+      hsl(236deg 29% 94%) 10%,
+      hsl(236deg 27% 94%) 14%,
+      hsl(236deg 24% 95%) 18%,
+      hsl(236deg 20% 96%) 22%,
+      hsl(236deg 16% 96%) 26%,
+      hsl(236deg 11% 97%) 30%,
+      hsl(236deg 4% 97%) 34%,
+      hsl(274deg 2% 97%) 39%,
+      hsl(274deg 6% 97%) 44%,
+      hsl(274deg 10% 97%) 49%,
+      hsl(274deg 13% 97%) 55%,
+      hsl(274deg 15% 96%) 61%,
+      hsl(274deg 18% 96%) 69%,
+      hsl(274deg 20% 96%) 78%,
+      hsl(274deg 22% 96%) 88%,
+      hsl(274deg 24% 95%) 100%);
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+  color: inherit;
+}
+
+:root {
+  --shadow-color: 229deg 20% 56%;
+  --shadow-elevation-low:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    0.5px 0.9px 1px -1.3px hsl(var(--shadow-color) / 0.34),
+    2px 3.5px 4px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-medium:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    0.8px 1.4px 1.8px -0.8px hsl(var(--shadow-color) / 0.36),
+    2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    4px 8px 10.6px -2.5px hsl(var(--shadow-color) / 0.36);
+  --shadow-elevation-high:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+    2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+    7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
+    17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
+    25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
+}
+
+button {
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-image: linear-gradient(335deg,
+      hsl(235deg 16% 84%) 0%,
+      hsl(235deg 15% 84%) 6%,
+      hsl(236deg 15% 84%) 13%,
+      hsl(236deg 14% 85%) 19%,
+      hsl(236deg 14% 85%) 25%,
+      hsl(236deg 14% 86%) 32%,
+      hsl(236deg 13% 86%) 38%,
+      hsl(236deg 13% 86%) 44%,
+      hsl(237deg 12% 87%) 51%,
+      hsl(237deg 12% 87%) 57%,
+      hsl(237deg 11% 87%) 63%,
+      hsl(237deg 11% 88%) 70%,
+      hsl(238deg 10% 88%) 76%,
+      hsl(238deg 9% 88%) 82%,
+      hsl(239deg 9% 89%) 88%,
+      hsl(239deg 8% 89%) 94%,
+      hsl(240deg 7% 89%) 100%);
+  box-shadow: var(--shadow-elevation-low);
+  cursor: pointer;
+}
+
+.title {
+  background-image: linear-gradient(85deg,
+      #43444e,
+      hsl(269, 24%, 30%) 43%,
+      hsl(303, 41%, 31%) 60%,
+      hsl(337, 34%, 35%) 77%,
+      hsl(281, 52%, 29%) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+input {
+  padding: 8px;
+}
+
+.form-field {
+  padding-bottom: 8px;
+}
+
+.form-field input {
+  margin-top: 4px;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.2;
+  }
+}
+
+.animate-fade-slow {
+  animation: fadeIn 2s infinite alternate;
+}
+
+.animate-fade-fast {
+  animation: fadeIn 500ms infinite alternate;
+}
