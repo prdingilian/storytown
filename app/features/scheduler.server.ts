@@ -1,26 +1,41 @@
 import { getRoom, getRoomUsers, updateRoom } from "./storyRoom.server"
 import { timers } from "./timers.server"
 
-export async function scheduleTimer(roomId: string, seconds: number) {
+export async function scheduleTimer(roomId: string) {
   cancelTimer(roomId)
-
-  const expiration = new Date().getTime() + (seconds * 1000)
   const room = await getRoom(roomId)
+
+  const timeLimit = Number(room.timeLimit)
+  const expiration = new Date().getTime() + (timeLimit * 1000)
   updateRoom(roomId, { ...room, nextTurn: expiration })
 
   const timeout = setInterval(async () => {
     if (new Date().getTime() > expiration) {
       const room = await getRoom(roomId)
+      const timeLimit = Number(room.timeLimit)
       const users = await getRoomUsers(roomId)
-      const expiration = new Date().getTime() + (seconds * 1000)
+      const expiration = new Date().getTime() + (timeLimit * 1000)
 
       room.currentUser = ((Number(room.currentUser) + 1) % users.length).toString()
       room.nextTurn = expiration
 
+      if (Number(room.currentUser) === 0) {
+        room.timeLimit = (Number(room.timeLimit) - 2).toString()
+      }
+
+      if (Number(room.timeLimit) < 2) {
+        room.state = 'complete'
+        room.currentUser = -1
+      }
+
       await updateRoom(roomId, room)
 
       clearInterval(timeout)
-      scheduleTimer(roomId, seconds)
+
+
+      if (room.state === 'playing') {
+        scheduleTimer(roomId)
+      }
     }
   }, 1000)
 

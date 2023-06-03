@@ -10,8 +10,8 @@ export async function createRoom(config: RoomConfig, creatorId: string) {
   redisClient.hSet(roomKey, config)
   redisClient.rPush(roomUsersKey, creatorId)
 
-  redisClient.expire(roomKey, 60 * 60 * 4)
-  redisClient.expire(roomUsersKey, 60 * 60 * 4)
+  redisClient.expire(roomKey, 60 * 60 * 3)
+  redisClient.expire(roomUsersKey, 60 * 60 * 3)
 
   return roomId
 }

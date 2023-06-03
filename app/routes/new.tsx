@@ -76,7 +76,7 @@ export default function NewStory() {
           <label>
             Initial time limit (seconds)
             <div>
-              <input type="number" name="timeLimit" max={120} defaultValue={60} required />
+              <input type="number" name="timeLimit" max={120} defaultValue={40} required />
             </div>
           </label>
         </div>

@@ -36,7 +36,7 @@ export const action = async ({ request, params }: ActionArgs) => {
       room.state = 'playing'
       room.currentUser = 0
       await updateRoom(params.storyId!, room)
-      scheduleTimer(params.storyId!, Number(room.timeLimit))
+      scheduleTimer(params.storyId!)
       return null
     }
 
@@ -52,7 +52,6 @@ export const action = async ({ request, params }: ActionArgs) => {
       room.timeLimit = (Number(room.timeLimit) - 2).toString()
     }
     if (Number(room.timeLimit) < 2) {
-      console.log('hello?')
       room.state = 'complete'
       room.currentUser = -1
     }
@@ -60,9 +59,8 @@ export const action = async ({ request, params }: ActionArgs) => {
     await updateRoom(params.storyId!, room)
 
     if (room.state === 'playing') {
-      scheduleTimer(params.storyId!, Number(room.timeLimit))
+      scheduleTimer(params.storyId!)
     } else if (room.state === 'complete') {
-      console.log('clearing timer')
       cancelTimer(params.storyId!)
     }
 
