@@ -11,8 +11,12 @@ function eventStream(signal: AbortSignal, init: InitFunction) {
       let encoder = new TextEncoder()
 
       function send(event: string, data: string) {
-        controller.enqueue(encoder.encode(`event: ${event}\n`))
-        controller.enqueue(encoder.encode(`data: ${data}\n\n`))
+        try {
+          controller.enqueue(encoder.encode(`event: ${event}\n`))
+          controller.enqueue(encoder.encode(`data: ${data}\n\n`))
+        } catch (e) {
+          console.error(e)
+        }
       }
 
       let cleanup = init(send)
