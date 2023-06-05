@@ -19,6 +19,7 @@ export async function createRoom(config: RoomConfig, creatorId: string) {
 export async function addUserToRoom(roomId: string, userId: string) {
   const roomUsersKey = `users:${roomId}`
   await redisClient.rPush(roomUsersKey, userId)
+  redisClient.expire(roomUsersKey, 60 * 60 * 3)
   redisClient.publish(roomId, 'updated')
 }
 

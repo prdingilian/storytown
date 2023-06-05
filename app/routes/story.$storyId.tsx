@@ -98,7 +98,9 @@ export default function Story() {
   const formRef = useRef<HTMLFormElement>(null)
   const bottomRef = useRef<HTMLParagraphElement>(null)
   const [storyCopied, setStoryCopied] = useState(false)
+  const [characterCount, setCharacterCount] = useState(0)
 
+  // Effect for subscribing to the room's event source
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (e.data === 'updated') {
@@ -119,6 +121,7 @@ export default function Story() {
 
   const [timer, setTimer] = useState<number>()
 
+  // Effect for the countdown timer
   useEffect(() => {
     if (isCurrentUser) {
       const timeLimit = Number(room.timeLimit)
@@ -142,8 +145,10 @@ export default function Story() {
     }
   }, [isCurrentUser, room.timeLimit, room.nextTurn])
 
+  // Effect for focus management
   useEffect(() => {
     if (isCurrentUser) {
+      setCharacterCount(0)
       formRef.current?.reset()
       inputRef.current?.focus()
       inputRef.current?.scrollIntoView()
@@ -195,13 +200,22 @@ export default function Story() {
                     {room.previousContribution}
                   </div>
                   <div>
-                    <textarea ref={inputRef} name='contribution' maxLength={Number(room.contributionLength)} style={{ width: '100%', height: '150px' }} />
+                    <textarea
+                      ref={inputRef}
+                      name='contribution'
+                      maxLength={Number(room.contributionLength)}
+                      style={{ width: '100%', height: '150px' }}
+                      onChange={e => setCharacterCount(e.target.value.length)}
+                    />
                   </div>
                 </label>
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px' }}>
-                {timer ? <div className={timer < 6 ? 'animate-fade-fast' : ''}>⏰ {Math.max(timer, 0)}</div> : null}
+                <div>
+                  <div>✏️ {Number(room.contributionLength) - characterCount}</div>
+                  {timer ? <div className={timer < 6 ? 'animate-fade-fast' : ''}>🕰️ {Math.max(timer, 0)}</div> : null}
+                </div>
                 <button type="submit">Submit</button>
               </div>
             </Form>
