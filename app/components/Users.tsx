@@ -4,7 +4,7 @@ export function Users({ users, currentUser }: UserProps) {
     <ul style={{ display: 'flex', listStyle: 'none', padding: '0', gap: '8px', flexWrap: 'wrap' }}>
       {users
         .map(u => u.split(':')[1])
-        .map(name => <li style={{
+        .map(name => <li key={name} style={{
           border: '1px solid #43444e',
           padding: '8px',
           borderRadius: '8px',
