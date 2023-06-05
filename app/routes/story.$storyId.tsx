@@ -28,13 +28,15 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 
 export const action = async ({ request, params }: ActionArgs) => {
   try {
-
     const room = await getRoom(params.storyId!)
     const users = await getRoomUsers(params.storyId!)
 
+    // Start the game if needed
     if (room.state === 'pending') {
       room.state = 'playing'
       room.currentUser = 0
+      const expiration = new Date().getTime() + (Number(room.timeLimit) * 1000)
+      room.nextTurn = expiration
       await updateRoom(params.storyId!, room)
       scheduleTimer(params.storyId!)
       return null
@@ -43,21 +45,34 @@ export const action = async ({ request, params }: ActionArgs) => {
     const formData = await request.formData()
     const contribution = formData.get('contribution')
 
+    // Add the submitted contribution
     if (contribution) {
       room.content += ` ${contribution}`
       room.previousContribution = contribution as string
     }
+
+    // Set the next user
     room.currentUser = ((Number(room.currentUser) + 1) % users.length).toString()
+
+    // Decrement the time limit
     if (Number(room.currentUser) === 0) {
       room.timeLimit = (Number(room.timeLimit) - 2).toString()
     }
+
+    // End the game if the time limit ran out
     if (Number(room.timeLimit) < 2) {
       room.state = 'complete'
       room.currentUser = -1
     }
 
+    // Set the new expiration time for the next turn
+    const expiration = new Date().getTime() + (Number(room.timeLimit) * 1000)
+    room.nextTurn = expiration
+
+    // Save the updated room
     await updateRoom(params.storyId!, room)
 
+    // Update or cancel the game timer as needed
     if (room.state === 'playing') {
       scheduleTimer(params.storyId!)
     } else if (room.state === 'complete') {

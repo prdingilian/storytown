@@ -5,12 +5,8 @@ export async function scheduleTimer(roomId: string) {
   cancelTimer(roomId)
   const room = await getRoom(roomId)
 
-  const timeLimit = Number(room.timeLimit)
-  const expiration = new Date().getTime() + (timeLimit * 1000)
-  updateRoom(roomId, { ...room, nextTurn: expiration })
-
   const timeout = setInterval(async () => {
-    if (new Date().getTime() > expiration) {
+    if (new Date().getTime() > Number(room.nextTurn)) {
       const room = await getRoom(roomId)
       const timeLimit = Number(room.timeLimit)
       const users = await getRoomUsers(roomId)
@@ -31,7 +27,6 @@ export async function scheduleTimer(roomId: string) {
       await updateRoom(roomId, room)
 
       clearInterval(timeout)
-
 
       if (room.state === 'playing') {
         scheduleTimer(roomId)
