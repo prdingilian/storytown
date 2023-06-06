@@ -64,9 +64,10 @@ textarea {
 }
 
 button {
-  font-weight: bold;
+  font-weight: 300;
   padding: 8px 16px;
   border-radius: 8px;
+  border: none;
   background-image: linear-gradient(335deg,
       hsl(235deg 16% 84%) 0%,
       hsl(235deg 15% 84%) 6%,
@@ -96,10 +97,10 @@ button:hover {
 
 .title {
   background-image: linear-gradient(85deg,
-      #43444e,
-      hsl(269, 24%, 30%) 43%,
-      hsl(303, 41%, 31%) 60%,
-      hsl(337, 34%, 35%) 77%,
+      #6276c4,
+      hsl(269, 20%, 50%) 43%,
+      hsl(303, 39%, 37%) 60%,
+      hsl(319, 39%, 39%) 77%,
       hsl(281, 52%, 29%) 100%);
   background-clip: text;
   -webkit-background-clip: text;

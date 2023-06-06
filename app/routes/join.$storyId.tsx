@@ -43,7 +43,7 @@ export default function Join() {
       </div>
 
       <div style={{ textAlign: 'end' }}>
-        <button type="submit">Join</button>
+        <button style={{ marginTop: '16px' }} type="submit">Join</button>
       </div>
     </form>
   )

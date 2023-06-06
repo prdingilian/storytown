@@ -5,8 +5,8 @@ export function Users({ users, currentUser }: UserProps) {
       {users
         .map(u => u.split(':')[1])
         .map(name => <li key={name} style={{
-          border: '1px solid #43444e',
-          padding: '8px',
+          border: '1px solid #ccc',
+          padding: '8px 12px',
           borderRadius: '8px',
           boxShadow: name === currentUser?.split(':')[1] ? 'var(--shadow-elevation-medium)' : 'var(--shadow-elevation-low)',
           transform: name === currentUser?.split(':')[1] ? 'scale(1.1)' : 'scale(0.9)',
