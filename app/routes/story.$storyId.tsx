@@ -229,7 +229,7 @@ export default function Story() {
         <div>
           <i>Congratulations on finishing your story! This page will expire soon so make sure to copy your story if you want
             to keep it.</i>
-          <div style={{ textAlign: 'end', paddingTop: '8px' }}>
+          <div style={{ textAlign: 'end', paddingTop: '16px' }}>
             <button onClick={async () => {
               await navigator.clipboard.writeText(room.content)
               setStoryCopied(true)
