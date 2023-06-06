@@ -212,7 +212,7 @@ export default function Story() {
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px' }}>
-                <div>
+                <div style={{ fontWeight: '200' }}>
                   <div>✏️ {Number(room.contributionLength) - characterCount}</div>
                   {timer ? <div className={timer < 6 ? 'animate-fade-fast' : ''}>🕰️ {Math.max(timer, 0)}</div> : null}
                 </div>
