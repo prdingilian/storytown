@@ -96,6 +96,7 @@ button:hover {
 }
 
 .title {
+  font-family: fantasy;
   background-image: linear-gradient(85deg,
       #6276c4,
       hsl(269, 20%, 50%) 43%,
